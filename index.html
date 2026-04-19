@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harlequin Haven Great Dane Rescue | Bethel, Ohio</title>
+    <meta name="description" content="Harlequin Haven Great Dane Rescue is a NO KILL shelter in Bethel, Ohio dedicated to saving abused, abandoned, and neglected Great Danes. 1,675+ dogs adopted.">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #c0392b;
+            --warm: #e67e22;
+            --light: #ecf0f1;
+            --dark: #1a1a2e;
+            --text: #333;
+            --text-light: #666;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6; }
+        .hero { background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%); color: white; padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('images/grdane_1.gif') center/cover no-repeat; opacity: 0.1; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; }
+        .hero .subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 1rem; position: relative; }
+        .hero .address { font-size: 1rem; opacity: 0.7; position: relative; }
+        .hero .cta-group { margin-top: 2rem; position: relative; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .stats { background: var(--light); padding: 3rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; text-align: center; }
+        .stat { min-width: 150px; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 0.9rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+        .section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2rem; color: var(--primary); text-align: center; margin-bottom: 0.5rem; }
+        .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 2rem; }
+        .dogs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+        .dog-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; }
+        .dog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .dog-card img { width: 100%; height: 250px; object-fit: cover; }
+        .dog-card .dog-name { padding: 1rem; font-size: 1.2rem; font-weight: 600; color: var(--primary); text-align: center; }
+        .about { background: var(--light); padding: 4rem 2rem; }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content p { margin-bottom: 1rem; font-size: 1.1rem; }
+        .nav-grid { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .nav-grid h2 { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 2rem; }
+        .nav-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .nav-category { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .nav-category h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-category ul { list-style: none; }
+        .nav-category li { padding: 0.4rem 0; }
+        .nav-category a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+        .nav-category a:hover { color: var(--accent); }
+        .mozart { background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .mozart img { border-radius: 12px; margin-bottom: 1rem; }
+        .mozart h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .mozart p { max-width: 600px; margin: 0 auto 1.5rem; opacity: 0.9; }
+        .urgent { background: var(--warm); color: white; padding: 2rem; text-align: center; }
+        .urgent h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .urgent a { color: white; font-weight: 700; text-decoration: underline; }
+        footer { background: var(--dark); color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        footer a { color: white; opacity: 0.8; text-decoration: none; }
+        footer a:hover { opacity: 1; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .stats { gap: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Harlequin Haven</h1>
+        <div class="subtitle">Great Dane Rescue</div>
+        <div class="address">11567 St. Rt. 774 &bull; Bethel, Ohio 45106 &bull; Open By Appointment Only</div>
+        <div class="cta-group">
+            <a href="danes/1danelist.htm" class="btn btn-primary">Meet Our Dogs</a>
+            <a href="howtohelp/howtohelp.htm" class="btn btn-secondary">How to Help</a>
+            <a href="hhdane/procedure.htm" class="btn btn-secondary">Adoption Process</a>
+        </div>
+    </section>
+
+    <section class="urgent">
+        <h2>Flying Pig Raffle Tickets Available Now!</h2>
+        <p>Support the rescue and win great prizes. <a href="howtohelp/howtohelp.htm">Buy your tickets today!</a></p>
+    </section>
+
+    <section class="stats">
+        <div class="stat"><div class="stat-number">1,675+</div><div class="stat-label">Dogs Adopted</div></div>
+        <div class="stat"><div class="stat-number">3</div><div class="stat-label">Available Now</div></div>
+        <div class="stat"><div class="stat-number">$18,600+</div><div class="stat-label">Vet Bills in 2024</div></div>
+        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Volunteer Staff</div></div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Available for Adoption</h2>
+        <p class="section-subtitle">Your new best friend might be waiting for you</p>
+        <div class="dogs-grid">
+            <a href="danes/asher.htm" class="dog-card"><img src="danes/asher/asher_hd.JPG" alt="Asher"><div class="dog-name">Asher</div></a>
+            <a href="danes/zayden.htm" class="dog-card"><img src="danes/zayden/1hd.jpg" alt="Zayden"><div class="dog-name">Zayden</div></a>
+            <a href="danes/tia.htm" class="dog-card"><img src="danes/tia/hd.jpg" alt="Tia"><div class="dog-name">Tia</div></a>
+            <a href="danes/einstein.htm" class="dog-card"><img src="danes/einstein/hd.JPG" alt="Einstein III"><div class="dog-name">Einstein III</div></a>
+            <a href="danes/adrian.htm" class="dog-card"><img src="danes/adrian/1hd.jpg" alt="Adrian"><div class="dog-name">Adrian</div></a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-content">
+            <h2 class="section-title">About Harlequin Haven</h2>
+            <p>Harlequin Haven Great Dane Rescue is a <strong>NO KILL shelter</strong> located in Ohio, dedicated to saving and placing abused, abandoned, and neglected Great Danes in suitable, loving, and forever homes in Ohio and extreme Northern Kentucky.</p>
+            <p>The welfare and safety of the Great Danes and other dogs is our main concern. All adoption applications are carefully screened to assure that the right Great Dane is placed in the right home.</p>
+            <p>The adoption of a Great Dane or any dog is a serious commitment and should not be done on impulse or whim.</p>
+            <p>We are a non-profit <strong>501(c)(3)</strong> organization with all volunteer staff. To date we have adopted out 1,675 Great Danes, other breeds, designer breeds and horses.</p>
+            <p>In 2024 the rescue spent over <strong>$18,600</strong> on veterinary bills alone. Please help us keep helping the Danes by making a tax deductible donation today!</p>
+            <div style="margin-top: 1.5rem;"><a href="howtohelp/howtohelp.htm" class="btn btn-primary">Donate Now</a></div>
+        </div>
+    </section>
+
+    <section class="mozart">
+        <img src="mozart/mo_pic_75.jpg" alt="Mozart the painting Great Dane" style="max-width: 200px; border-radius: 12px;">
+        <h2>Mozart Dane, Artist</h2>
+        <p>See his unique and beautiful paintings! Mozart's paintings make great gifts for all occasions. Layaway and gift certificates are available.</p>
+        <a href="mozart/index.htm" class="btn btn-secondary">Visit Mozart's Gallery</a>
+    </section>
+
+    <section class="section" style="background: #fef9f0;">
+        <h2 class="section-title">Recycled Feed Tote Bags</h2>
+        <p class="section-subtitle">They're back and they make great gifts!</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+            <img src="howtohelp/2025%20tote%20bags/bag2xxx.jpg" alt="Tote bag design" style="max-width: 250px; border-radius: 8px;">
+            <img src="howtohelp/2025%20tote%20bags/bag3ss.jpg" alt="Tote bag design" style="max-width: 250px; border-radius: 8px;">
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;"><a href="howtohelp/recycled_feed_tote_bags.htm" class="btn btn-primary">Order Yours</a></div>
+    </section>
+
+    <section class="nav-grid">
+        <h2>Explore</h2>
+        <div class="nav-categories">
+            <div class="nav-category"><h3>The Dogs</h3><ul><li><a href="danes/1danelist.htm">Adoptable Dogs</a></li><li><a href="memory/memory.htm">In Memory Of</a></li><li><a href="mozart/index.htm">Mozart Dane, Artist</a></li><li><a href="sanctuary/santuary.htm">Sanctuary Dogs</a></li><li><a href="success/success.htm">Success Stories</a></li></ul></div>
+            <div class="nav-category"><h3>Rescue Info</h3><ul><li><a href="hhdane/procedure.htm">Adoption Procedure</a></li><li><a href="events/events.htm">Events</a></li><li><a href="faq/faqmain.htm">FAQ</a></li><li><a href="howtohelp/howtohelp.htm">How To Help</a></li><li><a href="hhdane/mission.htm">Mission Statement</a></li><li><a href="newsletters/newsmain.htm">Newsletter</a></li><li><a href="whatsnew/whatsnewmain.htm">What's New</a></li><li><a href="howtohelp/wishlist.htm">Wish List</a></li></ul></div>
+            <div class="nav-category"><h3>Educational</h3><ul><li><a href="caninehuman/caninehuman.htm">Canines &amp; Humans</a></li><li><a href="care/caremain.htm">Canine Care</a></li><li><a href="medical/medicalmain.htm">Canine Medical</a></li><li><a href="tales/tales.htm">Canine Tales</a></li></ul></div>
+            <div class="nav-category"><h3>More</h3><ul><li><a href="links/links.htm">Our Favorite Links</a></li><li><a href="lost/lost.htm">Help Find Us! (Lost Dogs)</a></li><li><a href="hhdane/privacynotice.htm">Privacy Notice</a></li><li><a href="mailto:info@hhdane.org">Contact: info@hhdane.org</a></li></ul></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="hhdane/privacynotice.htm">Privacy Notice</a>
+            <a href="howtohelp/howtohelp.htm">How To Help</a>
+            <a href="hhdane/procedure.htm">Adoption Procedures</a>
+            <a href="faq/faqmain.htm">FAQ</a>
+        </div>
+        <p>All images and text on this site Copyright &copy; 1998-2026 Harlequin Haven Great Dane Rescue, Inc. unless otherwise credited.</p>
+        <p>Use of any image or text without written permission is expressly forbidden. All rights reserved.</p>
+    </footer>
+</body>
+</html>
