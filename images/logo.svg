@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 320" fill="none">
+  <defs>
+    <!-- Clip patches to the head silhouette so they never bleed outside -->
+    <clipPath id="hc">
+      <!-- Head + neck silhouette, same path as main fill below -->
+      <path d="
+        M 140,22
+        C 162,22 182,36 190,54
+        C 198,72 196,90 190,104
+        C 185,116 180,122 178,132
+        C 176,142 178,156 176,168
+        C 174,180 168,192 158,198
+        C 150,204 140,206 130,204
+        C 120,202 112,196 108,188
+        L 98,208
+        C 94,218 92,228 94,238
+        L 94,256
+        L 186,256
+        L 186,238
+        C 188,228 186,218 182,208
+        L 172,188
+        C 168,196 160,202 150,204
+        C 170,192 174,180 176,168
+        C 178,156 176,142 178,132
+        C 180,122 185,116 190,104
+        C 196,90 198,72 190,54
+        C 182,36 162,22 140,22 Z
+      "/>
+    </clipPath>
+  </defs>
+
+  <!-- ── LEFT EAR (natural, hanging) ── -->
+  <path d="
+    M 95,68
+    C 88,64 76,62 66,68
+    C 56,74 50,86 48,100
+    C 46,114 48,130 54,140
+    C 60,150 68,154 74,148
+    C 80,142 80,130 78,118
+    C 76,106 76,88 82,78
+    C 86,72 92,68 95,68 Z
+  " fill="#111111"/>
+
+  <!-- ── RIGHT EAR (natural, hanging) ── -->
+  <path d="
+    M 185,68
+    C 192,64 204,62 214,68
+    C 224,74 230,86 232,100
+    C 234,114 232,130 226,140
+    C 220,150 212,154 206,148
+    C 200,142 200,130 202,118
+    C 204,106 204,88 198,78
+    C 194,72 188,68 185,68 Z
+  " fill="#111111"/>
+
+  <!-- ── HEAD BASE (white) ── -->
+  <path d="
+    M 140,24
+    C 162,22 184,36 192,56
+    C 200,76 198,96 192,110
+    C 187,122 182,130 180,142
+    C 178,154 180,168 178,180
+    C 176,192 168,204 156,210
+    C 148,214 140,216 132,214
+    C 120,210 112,200 110,188
+    C 108,176 110,162 108,150
+    C 106,138 100,128 95,116
+    C 88,100 86,80 94,60
+    C 102,40 120,24 140,24 Z
+  " fill="#ffffff" stroke="#111111" stroke-width="3.5"/>
+
+  <!-- ── HARLEQUIN PATCH 1 — large, right side, forehead + eye ── -->
+  <!-- This is the dominant mark. Covers the right side of the head,
+       wraps over the forehead and down past the right eye.
+       Organic, not symmetric. -->
+  <path d="
+    M 156,26
+    C 170,28 184,38 192,54
+    C 199,68 198,84 194,96
+    C 190,108 184,118 180,130
+    C 177,140 178,152 176,162
+    C 174,172 170,180 164,184
+    C 156,190 148,192 142,188
+    C 136,184 133,176 134,168
+    C 135,158 140,150 138,140
+    C 136,130 128,122 126,114
+    C 123,106 124,97 128,90
+    C 132,83 138,79 140,74
+    C 143,68 142,62 146,56
+    C 149,50 154,38 156,26 Z
+  " fill="#111111"/>
+
+  <!-- ── HARLEQUIN PATCH 2 — small tick, left cheek ── -->
+  <path d="
+    M 106,140
+    C 102,136 96,134 92,138
+    C 88,142 88,150 92,156
+    C 96,162 104,164 108,160
+    C 112,156 112,146 106,140 Z
+  " fill="#111111"/>
+
+  <!-- ── HARLEQUIN PATCH 3 — tiny shoulder mark, lower right ── -->
+  <path d="
+    M 162,172
+    C 158,168 152,168 150,173
+    C 148,178 150,186 156,188
+    C 162,190 168,186 168,180
+    C 168,175 165,174 162,172 Z
+  " fill="#111111"/>
+
+  <!-- ── LEFT EYE ── -->
+  <ellipse cx="112" cy="102" rx="9" ry="9.5" fill="#111111"/>
+  <ellipse cx="114" cy="100" rx="3" ry="3" fill="#ffffff" opacity="0.7"/>
+
+  <!-- ── RIGHT EYE (sits inside the black patch — white sclera to show it) ── -->
+  <ellipse cx="168" cy="102" rx="9" ry="9.5" fill="#111111" stroke="#ffffff" stroke-width="2"/>
+  <ellipse cx="170" cy="100" rx="3" ry="3" fill="#ffffff" opacity="0.5"/>
+
+  <!-- ── NOSE ── -->
+  <rect x="126" y="154" width="28" height="18" rx="6" ry="8" fill="#111111"/>
+  <!-- nostrils -->
+  <ellipse cx="132" cy="162" rx="4" ry="3.5" fill="#2a2a2a"/>
+  <ellipse cx="148" cy="162" rx="4" ry="3.5" fill="#2a2a2a"/>
+  <!-- nose highlight -->
+  <ellipse cx="137" cy="157" rx="3" ry="2" fill="#444444"/>
+
+  <!-- ── MOUTH ── -->
+  <path d="M 140,172 C 133,176 126,178 120,175" stroke="#111111" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M 140,172 C 147,176 154,178 160,175" stroke="#111111" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+  <!-- ── NECK ── -->
+  <path d="
+    M 110,208
+    C 100,216 94,228 94,240
+    L 94,256
+    L 186,256
+    L 186,240
+    C 186,228 180,216 170,208
+    C 162,216 152,220 140,220
+    C 128,220 118,216 110,208 Z
+  " fill="#ffffff" stroke="#111111" stroke-width="3.5"/>
+
+  <!-- Neck harlequin patch (right side of neck) -->
+  <path d="
+    M 168,210
+    C 174,214 180,222 182,232
+    C 184,242 182,252 178,256
+    L 158,256
+    C 162,248 165,238 164,228
+    C 163,218 165,213 168,210 Z
+  " fill="#111111"/>
+
+  <!-- ── WORDMARK ── -->
+  <text
+    x="140" y="286"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="17"
+    font-weight="700"
+    letter-spacing="3"
+    text-anchor="middle"
+    fill="#111111"
+  >HARLEQUIN HAVEN</text>
+  <text
+    x="140" y="306"
+    font-family="'Inter', Helvetica, sans-serif"
+    font-size="9.5"
+    font-weight="600"
+    letter-spacing="4"
+    text-anchor="middle"
+    fill="#c0392b"
+  >GREAT DANE RESCUE</text>
+
+</svg>
