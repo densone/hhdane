@@ -1,173 +1,394 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 320" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 580" fill="none">
   <defs>
-    <!-- Clip patches to the head silhouette so they never bleed outside -->
-    <clipPath id="hc">
-      <!-- Head + neck silhouette, same path as main fill below -->
-      <path d="
-        M 140,22
-        C 162,22 182,36 190,54
-        C 198,72 196,90 190,104
-        C 185,116 180,122 178,132
-        C 176,142 178,156 176,168
-        C 174,180 168,192 158,198
-        C 150,204 140,206 130,204
-        C 120,202 112,196 108,188
-        L 98,208
-        C 94,218 92,228 94,238
-        L 94,256
-        L 186,256
-        L 186,238
-        C 188,228 186,218 182,208
-        L 172,188
-        C 168,196 160,202 150,204
-        C 170,192 174,180 176,168
-        C 178,156 176,142 178,132
-        C 180,122 185,116 190,104
-        C 196,90 198,72 190,54
-        C 182,36 162,22 140,22 Z
-      "/>
+
+    <!-- Sketch wobble: makes every line look drawn by hand -->
+    <filter id="sk" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Heavier wobble for the rough patch edges -->
+    <filter id="skp" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="5" seed="17" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Paper texture overlay -->
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+      <feComposite in="SourceGraphic" in2="gray" operator="arithmetic" k1="0" k2="1" k3="0.07" k4="0"/>
+    </filter>
+
+    <!-- Clip: confine patch hatching to patch shape -->
+    <clipPath id="patch-eye-clip">
+      <path d="M 285,88 C 310,90 345,108 365,130 C 382,150 390,175 385,200 C 380,225 365,248 342,262 C 320,276 294,280 274,272 C 254,264 244,246 240,228 C 236,210 238,190 245,175 C 253,160 265,148 270,135 C 276,120 278,105 285,88 Z"/>
     </clipPath>
+
+    <!-- Full head clip (for internal hatching) -->
+    <clipPath id="head-clip">
+      <path d="M 240,55 C 278,52 318,62 348,80 C 375,96 390,120 390,148 C 390,172 378,198 362,218 C 348,236 330,250 320,270 C 312,286 310,305 308,322 C 305,342 298,360 286,372 C 272,386 255,392 240,392 C 225,392 208,386 194,372 C 182,360 175,342 172,322 C 170,305 168,286 160,270 C 150,250 132,236 118,218 C 102,198 90,172 90,148 C 90,120 105,96 132,80 C 162,62 202,52 240,55 Z"/>
+    </clipPath>
+
   </defs>
 
-  <!-- ── LEFT EAR (natural, hanging) ── -->
-  <path d="
-    M 95,68
-    C 88,64 76,62 66,68
-    C 56,74 50,86 48,100
-    C 46,114 48,130 54,140
-    C 60,150 68,154 74,148
-    C 80,142 80,130 78,118
-    C 76,106 76,88 82,78
-    C 86,72 92,68 95,68 Z
-  " fill="#111111"/>
+  <!-- ════════════════════════════════════════
+       WARM PAPER BACKGROUND
+       ════════════════════════════════════════ -->
+  <rect width="480" height="580" fill="#fdf8f0"/>
 
-  <!-- ── RIGHT EAR (natural, hanging) ── -->
-  <path d="
-    M 185,68
-    C 192,64 204,62 214,68
-    C 224,74 230,86 232,100
-    C 234,114 232,130 226,140
-    C 220,150 212,154 206,148
-    C 200,142 200,130 202,118
-    C 204,106 204,88 198,78
-    C 194,72 188,68 185,68 Z
-  " fill="#111111"/>
+  <!-- ════════════════════════════════════════
+       LEFT EAR — natural, hanging, white with
+       a small black patch at the base
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)">
+    <!-- Ear outline -->
+    <path d="
+      M 138,118
+      C 122,115 104,118 92,130
+      C 80,142 76,162 80,182
+      C 84,202 96,218 110,226
+      C 124,234 138,230 146,220
+      C 154,210 155,196 152,182
+      C 149,168 142,155 140,140
+      C 138,128 138,122 138,118 Z
+    " fill="#f0ebe0" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/>
 
-  <!-- ── HEAD BASE (white) ── -->
-  <path d="
-    M 140,24
-    C 162,22 184,36 192,56
-    C 200,76 198,96 192,110
-    C 187,122 182,130 180,142
-    C 178,154 180,168 178,180
-    C 176,192 168,204 156,210
-    C 148,214 140,216 132,214
-    C 120,210 112,200 110,188
-    C 108,176 110,162 108,150
-    C 106,138 100,128 95,116
-    C 88,100 86,80 94,60
-    C 102,40 120,24 140,24 Z
-  " fill="#ffffff" stroke="#111111" stroke-width="3.5"/>
+    <!-- Small black tick on the ear base -->
+    <path d="
+      M 138,120
+      C 130,118 120,122 114,132
+      C 108,142 110,156 118,160
+      C 126,164 136,158 140,148
+      C 144,138 142,124 138,120 Z
+    " fill="#1a1a1a"/>
 
-  <!-- ── HARLEQUIN PATCH 1 — large, right side, forehead + eye ── -->
-  <!-- This is the dominant mark. Covers the right side of the head,
-       wraps over the forehead and down past the right eye.
-       Organic, not symmetric. -->
-  <path d="
-    M 156,26
-    C 170,28 184,38 192,54
-    C 199,68 198,84 194,96
-    C 190,108 184,118 180,130
-    C 177,140 178,152 176,162
-    C 174,172 170,180 164,184
-    C 156,190 148,192 142,188
-    C 136,184 133,176 134,168
-    C 135,158 140,150 138,140
-    C 136,130 128,122 126,114
-    C 123,106 124,97 128,90
-    C 132,83 138,79 140,74
-    C 143,68 142,62 146,56
-    C 149,50 154,38 156,26 Z
-  " fill="#111111"/>
+    <!-- Ear inner fold line -->
+    <path d="M 132,145 C 128,158 128,172 132,186 C 136,198 142,208 148,215"
+          stroke="#5a5050" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
 
-  <!-- ── HARLEQUIN PATCH 2 — small tick, left cheek ── -->
-  <path d="
-    M 106,140
-    C 102,136 96,134 92,138
-    C 88,142 88,150 92,156
-    C 96,162 104,164 108,160
-    C 112,156 112,146 106,140 Z
-  " fill="#111111"/>
+  <!-- ════════════════════════════════════════
+       RIGHT EAR — partially behind the patch,
+       mostly black / inside the patch area
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)">
+    <path d="
+      M 342,118
+      C 358,115 376,118 388,130
+      C 400,142 404,162 400,182
+      C 396,202 384,218 370,226
+      C 356,234 342,230 334,220
+      C 326,210 325,196 328,182
+      C 331,168 338,155 340,140
+      C 342,128 342,122 342,118 Z
+    " fill="#1a1a1a"/>
+  </g>
 
-  <!-- ── HARLEQUIN PATCH 3 — tiny shoulder mark, lower right ── -->
-  <path d="
-    M 162,172
-    C 158,168 152,168 150,173
-    C 148,178 150,186 156,188
-    C 162,190 168,186 168,180
-    C 168,175 165,174 162,172 Z
-  " fill="#111111"/>
+  <!-- ════════════════════════════════════════
+       MAIN HEAD — white base, ink outline
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)">
+    <path d="
+      M 240,58
+      C 276,55 314,64 342,82
+      C 368,98 382,122 382,148
+      C 382,170 372,194 358,214
+      C 344,233 326,247 318,266
+      C 310,283 308,302 306,320
+      C 304,340 296,358 284,370
+      C 270,384 254,390 240,390
+      C 226,390 210,384 196,370
+      C 184,358 176,340 174,320
+      C 172,302 170,283 162,266
+      C 154,247 136,233 122,214
+      C 108,194 98,170 98,148
+      C 98,122 112,98 138,82
+      C 166,64 204,55 240,58 Z
+    " fill="#f9f5ec" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+  </g>
 
-  <!-- ── LEFT EYE ── -->
-  <ellipse cx="112" cy="102" rx="9" ry="9.5" fill="#111111"/>
-  <ellipse cx="114" cy="100" rx="3" ry="3" fill="#ffffff" opacity="0.7"/>
+  <!-- ════════════════════════════════════════
+       THE DOMINANT HARLEQUIN PATCH
+       Right side: covers the brow, eye, cheek.
+       This is the coat's signature mark —
+       torn, organic, confidently asymmetric.
+       ════════════════════════════════════════ -->
+  <g filter="url(#skp)">
+    <path d="
+      M 292,62
+      C 314,64 340,74 358,90
+      C 376,106 384,128 382,152
+      C 380,172 372,192 358,210
+      C 346,226 330,240 322,258
+      C 315,273 314,290 310,306
+      C 306,320 298,334 288,342
+      C 278,350 264,352 254,346
+      C 244,340 238,326 238,312
+      C 238,296 244,280 248,265
+      C 252,250 254,235 250,220
+      C 246,204 236,192 232,177
+      C 228,161 229,143 236,128
+      C 243,113 256,102 266,95
+      C 276,88 283,75 292,62 Z
+    " fill="#1a1a1a"/>
+  </g>
 
-  <!-- ── RIGHT EYE (sits inside the black patch — white sclera to show it) ── -->
-  <ellipse cx="168" cy="102" rx="9" ry="9.5" fill="#111111" stroke="#ffffff" stroke-width="2"/>
-  <ellipse cx="170" cy="100" rx="3" ry="3" fill="#ffffff" opacity="0.5"/>
+  <!-- ════════════════════════════════════════
+       SECONDARY PATCH — small, left cheekbone
+       ════════════════════════════════════════ -->
+  <g filter="url(#skp)">
+    <path d="
+      M 156,220
+      C 148,215 136,216 130,226
+      C 124,236 126,252 136,258
+      C 146,264 160,260 165,249
+      C 170,238 164,224 156,220 Z
+    " fill="#1a1a1a"/>
+  </g>
 
-  <!-- ── NOSE ── -->
-  <rect x="126" y="154" width="28" height="18" rx="6" ry="8" fill="#111111"/>
-  <!-- nostrils -->
-  <ellipse cx="132" cy="162" rx="4" ry="3.5" fill="#2a2a2a"/>
-  <ellipse cx="148" cy="162" rx="4" ry="3.5" fill="#2a2a2a"/>
-  <!-- nose highlight -->
-  <ellipse cx="137" cy="157" rx="3" ry="2" fill="#444444"/>
+  <!-- Small tick near chin -->
+  <g filter="url(#skp)">
+    <path d="
+      M 218,352
+      C 212,348 204,350 202,358
+      C 200,366 206,374 214,374
+      C 222,374 228,367 226,359
+      C 224,353 220,352 218,352 Z
+    " fill="#1a1a1a"/>
+  </g>
 
-  <!-- ── MOUTH ── -->
-  <path d="M 140,172 C 133,176 126,178 120,175" stroke="#111111" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-  <path d="M 140,172 C 147,176 154,178 160,175" stroke="#111111" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- ════════════════════════════════════════
+       CROSS-HATCHING — shadow and depth
+       Under the jaw, in the eye socket,
+       under the brow. Gives the sketch its
+       weight and three-dimensionality.
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)" opacity="0.35" stroke="#2a2a2a" stroke-width="1.2" stroke-linecap="round">
+    <!-- Shadow under left cheek / jaw -->
+    <line x1="142" y1="285" x2="165" y2="310"/>
+    <line x1="135" y1="292" x2="158" y2="317"/>
+    <line x1="128" y1="299" x2="151" y2="324"/>
+    <line x1="122" y1="308" x2="142" y2="332"/>
+    <line x1="118" y1="318" x2="136" y2="340"/>
+    <!-- Cross direction -->
+    <line x1="118" y1="300" x2="150" y2="330"/>
+    <line x1="112" y1="312" x2="144" y2="342"/>
 
-  <!-- ── NECK ── -->
-  <path d="
-    M 110,208
-    C 100,216 94,228 94,240
-    L 94,256
-    L 186,256
-    L 186,240
-    C 186,228 180,216 170,208
-    C 162,216 152,220 140,220
-    C 128,220 118,216 110,208 Z
-  " fill="#ffffff" stroke="#111111" stroke-width="3.5"/>
+    <!-- Brow shadow (left brow, inside the white area) -->
+    <line x1="152" y1="172" x2="175" y2="185"/>
+    <line x1="148" y1="180" x2="171" y2="193"/>
+    <line x1="145" y1="188" x2="166" y2="200"/>
 
-  <!-- Neck harlequin patch (right side of neck) -->
-  <path d="
-    M 168,210
-    C 174,214 180,222 182,232
-    C 184,242 182,252 178,256
-    L 158,256
-    C 162,248 165,238 164,228
-    C 163,218 165,213 168,210 Z
-  " fill="#111111"/>
+    <!-- Shadow on neck below jaw -->
+    <line x1="175" y1="370" x2="200" y2="395"/>
+    <line x1="168" y1="378" x2="193" y2="403"/>
+    <line x1="162" y1="386" x2="186" y2="410"/>
+    <line x1="158" y1="394" x2="180" y2="418"/>
 
-  <!-- ── WORDMARK ── -->
-  <text
-    x="140" y="286"
-    font-family="'Playfair Display', Georgia, serif"
-    font-size="17"
-    font-weight="700"
-    letter-spacing="3"
-    text-anchor="middle"
-    fill="#111111"
-  >HARLEQUIN HAVEN</text>
-  <text
-    x="140" y="306"
-    font-family="'Inter', Helvetica, sans-serif"
-    font-size="9.5"
-    font-weight="600"
-    letter-spacing="4"
-    text-anchor="middle"
-    fill="#c0392b"
-  >GREAT DANE RESCUE</text>
+    <!-- Right side jaw shadow (just below patch edge) -->
+    <line x1="290" y1="355" x2="310" y2="378"/>
+    <line x1="282" y1="362" x2="302" y2="385"/>
+    <line x1="298" y1="360" x2="316" y2="382"/>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       FUR TEXTURE — short directional lines
+       that follow the lay of the coat.
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)" opacity="0.22" stroke="#2a2020" stroke-width="1" stroke-linecap="round">
+    <!-- Forehead fur (left side, white area) -->
+    <line x1="155" y1="95" x2="162" y2="108"/><line x1="162" y1="90" x2="169" y2="103"/>
+    <line x1="170" y1="87" x2="177" y2="100"/><line x1="178" y1="85" x2="184" y2="98"/>
+    <line x1="145" y1="105" x2="153" y2="118"/><line x1="153" y1="100" x2="161" y2="113"/>
+    <line x1="140" y1="115" x2="148" y2="127"/><line x1="148" y1="110" x2="156" y2="122"/>
+
+    <!-- Cheek fur (left white area) -->
+    <line x1="114" y1="178" x2="122" y2="188"/><line x1="110" y1="188" x2="118" y2="198"/>
+    <line x1="106" y1="198" x2="115" y2="208"/><line x1="108" y1="210" x2="116" y2="220"/>
+    <line x1="112" y1="222" x2="120" y2="232"/><line x1="118" y1="234" x2="126" y2="244"/>
+
+    <!-- Muzzle fur lines -->
+    <line x1="168" y1="285" x2="174" y2="298"/><line x1="175" y1="282" x2="181" y2="295"/>
+    <line x1="182" y1="280" x2="188" y2="293"/><line x1="190" y1="278" x2="196" y2="291"/>
+    <line x1="197" y1="277" x2="203" y2="290"/><line x1="165" y1="300" x2="171" y2="313"/>
+    <line x1="172" y1="298" x2="178" y2="311"/><line x1="180" y1="296" x2="186" y2="309"/>
+
+    <!-- Neck fur, left side -->
+    <line x1="178" y1="395" x2="185" y2="412"/><line x1="188" y1="398" x2="195" y2="415"/>
+    <line x1="198" y1="400" x2="205" y2="417"/><line x1="208" y1="402" x2="215" y2="419"/>
+    <line x1="170" y1="410" x2="177" y2="428"/><line x1="180" y1="412" x2="187" y2="430"/>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       LEFT EYE — expressive, almond shape,
+       set deep in the brow
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)">
+    <!-- Eyelid / eye socket outline -->
+    <path d="M 170,202 C 178,194 192,190 206,192 C 220,194 230,202 232,212 C 234,222 228,232 218,236 C 208,240 196,238 186,232 C 176,226 168,214 170,202 Z"
+          fill="#f9f5ec" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Iris -->
+    <ellipse cx="201" cy="214" rx="14" ry="14" fill="#2a2018"/>
+    <!-- Pupil -->
+    <ellipse cx="201" cy="214" rx="8" ry="9" fill="#0a0a0a"/>
+    <!-- Specular highlight -->
+    <ellipse cx="206" cy="208" rx="3.5" ry="3.5" fill="#ffffff" opacity="0.85"/>
+    <!-- Lower lid line -->
+    <path d="M 172,218 C 180,224 192,228 204,228 C 216,228 226,224 234,218"
+          stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- Upper lash suggestion -->
+    <path d="M 172,204 C 180,198 192,194 204,194 C 216,194 225,198 232,204"
+          stroke="#1a1a1a" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Brow furrow line -->
+    <path d="M 162,188 C 172,184 188,182 204,183"
+          stroke="#2a2a2a" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- RIGHT EYE — barely visible inside the dark patch,
+       just the white reflection showing -->
+  <g filter="url(#sk)">
+    <ellipse cx="300" cy="206" rx="5" ry="4.5" fill="#ffffff" opacity="0.5"/>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       NOSE — broad, black, square-ish.
+       The Great Dane nose is large and noble.
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)">
+    <!-- Nose body -->
+    <path d="
+      M 208,308
+      C 208,300 214,294 224,292
+      C 232,290 248,290 256,292
+      C 266,294 272,300 272,308
+      C 272,318 268,326 260,332
+      C 252,338 228,338 220,332
+      C 212,326 208,318 208,308 Z
+    " fill="#111111" stroke="#111" stroke-width="1"/>
+
+    <!-- Nostrils (lighter indentations) -->
+    <path d="M 222,310 C 218,306 218,318 224,320 C 230,322 232,314 228,310 C 225,307 223,308 222,310 Z"
+          fill="#2a2a2a"/>
+    <path d="M 258,310 C 254,307 253,308 252,310 C 250,314 252,322 258,320 C 264,318 264,306 260,310 Z"
+          fill="#2a2a2a"/>
+
+    <!-- Nose highlight -->
+    <ellipse cx="232" cy="302" rx="5" ry="3.5" fill="#555" opacity="0.7"/>
+
+    <!-- Philtrum (center groove from nose to lip) -->
+    <line x1="240" y1="336" x2="240" y2="350" stroke="#3a3020" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Lip line (slightly pendulous in the breed) -->
+    <path d="M 200,355 C 214,350 226,348 240,348 C 254,348 266,350 280,355"
+          stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Lower lip / chin line -->
+    <path d="M 205,360 C 218,368 228,372 240,372 C 252,372 262,368 275,360"
+          stroke="#1a1a1a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       JOWL LINES — the soft flews of the breed
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)" stroke="#2a2a2a" fill="none" stroke-linecap="round">
+    <!-- Left jowl crease -->
+    <path d="M 192,320 C 186,332 182,346 184,360 C 186,368 190,374 196,376" stroke-width="1.8" opacity="0.6"/>
+    <!-- Right jowl crease -->
+    <path d="M 288,320 C 294,332 298,346 296,360 C 294,368 290,374 284,376" stroke-width="1.8" opacity="0.6"/>
+    <!-- Left cheek curve -->
+    <path d="M 112,210 C 118,230 126,252 130,272 C 134,290 134,308 130,326" stroke-width="1.5" opacity="0.45"/>
+    <!-- Right (under patch) cheek -->
+    <path d="M 368,210 C 362,230 354,252 350,272 C 346,290 346,308 350,326" stroke-width="1.5" opacity="0.45"/>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       NECK — long, arched, powerful
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)">
+    <!-- Neck outline -->
+    <path d="
+      M 182,388
+      C 168,400 158,418 155,438
+      C 152,458 156,478 158,498
+      L 322,498
+      C 324,478 328,458 325,438
+      C 322,418 312,400 298,388
+      C 282,394 262,396 240,396
+      C 218,396 198,394 182,388 Z
+    " fill="#f9f5ec" stroke="#1a1a1a" stroke-width="2.8" stroke-linejoin="round"/>
+
+    <!-- Neck patch (right side, continuing the coat pattern down) -->
+    <path d="
+      M 295,392
+      C 308,398 320,412 326,428
+      C 332,444 330,462 324,476
+      C 318,490 308,498 298,498
+      L 275,498
+      C 282,490 290,480 294,466
+      C 298,452 298,438 294,426
+      C 290,414 285,404 295,392 Z
+    " fill="#1a1a1a"/>
+
+    <!-- Throat line -->
+    <path d="M 210,398 C 224,408 240,412 255,408 C 265,405 275,400 284,396"
+          stroke="#3a3030" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+    <!-- Neck fur lines left -->
+    <g opacity="0.2" stroke="#2a2020" stroke-width="1" stroke-linecap="round">
+      <line x1="175" y1="412" x2="183" y2="430"/>
+      <line x1="185" y1="410" x2="193" y2="428"/>
+      <line x1="195" y1="408" x2="203" y2="426"/>
+      <line x1="172" y1="428" x2="180" y2="446"/>
+      <line x1="182" y1="425" x2="190" y2="443"/>
+      <line x1="192" y1="422" x2="200" y2="440"/>
+    </g>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       FINAL OUTLINE REINFORCEMENT
+       A second, slightly heavier outer stroke
+       on the whole head — gives the ink-sketch
+       feel of a drawn outline where the pen
+       went over the edge more than once.
+       ════════════════════════════════════════ -->
+  <g filter="url(#sk)" opacity="0.55">
+    <path d="
+      M 240,58
+      C 276,55 314,64 342,82
+      C 368,98 382,122 382,148
+      C 382,170 372,194 358,214
+      C 344,233 326,247 318,266
+      C 310,283 308,302 306,320
+      C 304,340 296,358 284,370
+      C 270,384 254,390 240,390
+      C 226,390 210,384 196,370
+      C 184,358 176,340 174,320
+      C 172,302 170,283 162,266
+      C 154,247 136,233 122,214
+      C 108,194 98,170 98,148
+      C 98,122 112,98 138,82
+      C 166,64 204,55 240,58 Z
+    " stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ════════════════════════════════════════
+       WORDMARK
+       ════════════════════════════════════════ -->
+  <text x="240" y="532"
+    font-family="'Playfair Display', 'Georgia', serif"
+    font-size="22" font-weight="700" font-style="italic"
+    letter-spacing="1.5" text-anchor="middle" fill="#1a1a1a">
+    Harlequin Haven
+  </text>
+  <text x="240" y="557"
+    font-family="'Inter', 'Helvetica Neue', sans-serif"
+    font-size="10" font-weight="600"
+    letter-spacing="5" text-anchor="middle" fill="#c0392b">
+    GREAT DANE RESCUE
+  </text>
+
+  <!-- Ruled line under the dog, above the text — like a sketchbook page -->
+  <line x1="80" y1="512" x2="400" y2="512" stroke="#c8b898" stroke-width="1" opacity="0.7"/>
 
 </svg>
