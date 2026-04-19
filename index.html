@@ -111,12 +111,29 @@
             min-height: 100vh;
             background: var(--white);
             position: relative; overflow: hidden;
-            display: flex; align-items: center;
-            padding: 120px 5% 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 80px 0 0;
         }
         .hero-content {
             position: relative; z-index: 10;
-            max-width: 520px;
+            padding: 60px 5% 60px 8%;
+            max-width: 560px;
+        }
+        .hero-logo-panel {
+            position: relative; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            padding: 60px 6% 60px 4%;
+            min-height: 100vh;
+            background: var(--ink);
+            clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        .hero-logo-panel img {
+            width: min(380px, 80%);
+            height: auto;
+            filter: invert(1);
+            opacity: 0.96;
         }
         .hero-eyebrow {
             display: inline-flex; align-items: center; gap: 0.6rem;
@@ -251,8 +268,10 @@
             .nav-links a { padding: 0.85rem 2rem; border-left: none; }
             .nav-links.open { display: flex; }
             .hamburger { display: flex; }
-            .hero-content { max-width: 100%; }
-            .p-hero-main { width: 100%; height: 50%; top: auto; bottom: -10%; right: 0; border-radius: 40% 60% 0 0 / 70% 80% 0 0; }
+            .hero { grid-template-columns: 1fr; }
+            .hero-content { max-width: 100%; padding: 60px 6% 40px; }
+            .hero-logo-panel { min-height: 60vw; clip-path: polygon(0% 8%, 100% 0%, 100% 100%, 0% 100%); }
+            .hero-logo-panel img { width: min(260px, 70%); }
             .p-hero-sm, .p-hero-tick { display: none; }
             .stats-inner { grid-template-columns: repeat(2,1fr); }
         }
@@ -306,12 +325,8 @@
      HERO — white ground, black patches erupting into it
      ═══════════════════════════════════════════════════ -->
 <section class="hero">
-    <!-- The main patch: a massive form dominating the right side -->
-    <!-- Its torn edge is where the eye lives -->
-    <div class="p p-hero-main"></div>
-    <!-- A shoulder-mark: smaller, upper left, rotated -->
+    <!-- Small scattered patches on the white left side -->
     <div class="p p-hero-sm"></div>
-    <!-- A tick mark: the tiniest patch, just present -->
     <div class="p p-hero-tick"></div>
 
     <div class="hero-content">
@@ -329,6 +344,11 @@
             <a href="danes/1danelist.htm" class="btn btn-ink">Meet Our Dogs</a>
             <a href="howtohelp/howtohelp.htm" class="btn btn-ghost">How to Help</a>
         </div>
+    </div>
+
+    <!-- Logo large on the right — black panel with the Dane mark -->
+    <div class="hero-logo-panel fu d2">
+        <img src="images/logo.svg" alt="Harlequin Haven Great Dane Rescue">
     </div>
 </section>
 
